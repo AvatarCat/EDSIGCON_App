@@ -121,7 +121,7 @@ const AppNavigator = createStackNavigator(
       screen: HomeScreen,
       navigationOptions: {
         header: null, //this will hide the header
-        headerBackTitle: null,
+        headerBackTitle: null, // this hides the title of the back button
       },
     },
     Lost: {

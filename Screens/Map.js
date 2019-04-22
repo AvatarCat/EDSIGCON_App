@@ -1,31 +1,22 @@
-import React, { Component } from 'react';
-import { Text, View, ImagePickerIOS, Image, Button } from 'react-native';
+import React from 'react';
+import styles from '../styles'
 
-export default class CameraRollPicker extends Component {
-  constructor() {
-    super();
-    this.state = { image: null };
-  }
+import {Text, View} from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
-  componentDidMount() {
-    this.pickImage();
-  }
-
-  pickImage() {
-    // openSelectDialog(config, successCallback, errorCallback);
-    ImagePickerIOS.openSelectDialog({}, imageUri => {
-      this.setState({ image: imageUri });
-    }, error => console.error(error));
-  }
-
-  render() {
-    return (
-      <View style={{ flex: 1 }}>
-        {this.state.image?
-          <Image style={{ flex: 1 }} source={{ uri: this.state.image }} /> :
-          null
-        }
-      </View>
-    );
-  }
+class Map extends React.Component {
+    state = {}
+     componentWillMount() {}
+    
+     render() {
+         return (
+            <ScrollView>
+                <View>
+                    
+                </View>
+            </ScrollView>
+         )
+    }
 }
+
+export default Map;

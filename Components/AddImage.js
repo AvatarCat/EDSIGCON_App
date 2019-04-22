@@ -2,7 +2,6 @@ import React from 'react';
 import { Image, View, Dimensions, ScrollView } from 'react-native';
 import { ImagePicker, Permissions } from 'expo';
 import { Button } from 'react-native-elements';
-import MasonryList from "react-native-masonry-list";
 
 export default class ImagePickerExample extends React.Component {
     state = {

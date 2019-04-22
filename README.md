@@ -6,4 +6,3 @@
 * npm install --save react-native-masonry-list
 * npm install --save react-native-popup-dialog
 * npm install --save react-native-gesture-handler
-* npm install --save

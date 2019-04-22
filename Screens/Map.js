@@ -1,22 +1,18 @@
 import React from 'react';
-import styles from '../styles'
+import { MapView } from 'expo';
 
-import {Text, View} from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
-
-class Map extends React.Component {
-    state = {}
-     componentWillMount() {}
-    
-     render() {
-         return (
-            <ScrollView>
-                <View>
-                    
-                </View>
-            </ScrollView>
-         )
-    }
+export default class Map extends React.Component {
+  render() {
+    return (
+      <MapView
+        style={{ flex: 1 }}
+        initialRegion={{
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+      />
+    );
+  }
 }
-
-export default Map;

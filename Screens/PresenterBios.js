@@ -1,9 +1,15 @@
+// Got code from https://github.com/ahuimanu/CIDM4385-Spring2019/blob/master/ExpoFirestore/firestore_test/App.js
+// Got help from John Cunningham
+
 import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 import * as firebase from 'firebase';
 import 'firebase/firestore';
 import { ScrollView } from 'react-native-gesture-handler';
+import { ListItem } from 'react-native-elements';
+
+let presenters = [];
 
 export default class App extends React.Component {
 
@@ -37,10 +43,8 @@ export default class App extends React.Component {
   }
 
   GetAllPresenters(Name){
-
-    console.log(`USING Name: ${Name}`);
-
     let presentersRef = this.state.db.collection("Presenters");
+
 
     presentersRef.get()
              .then( (querySnapshot) => {
@@ -48,6 +52,7 @@ export default class App extends React.Component {
                 this.HandleDatabaseRead(querySnapshot);
                }
              })
+             .then(() => {this.setState({Presenters: presenters})})
              .catch((error) => 
              {
                 console.log(error);
@@ -56,9 +61,6 @@ export default class App extends React.Component {
 
   //callback for firebase to call
   HandleDatabaseRead(data){
-
-    console.log("HandleDatabaseRead");
-
     const Presenters = [];
 
     data.forEach( (doc) => {
@@ -70,10 +72,10 @@ export default class App extends React.Component {
         key: doc.id,
         Name: Name,
         Role: Role, 
-        Shcool: School
+        School: School
       }
 
-      Presenters.push(listPresenters);
+      presenters.push(listPresenters);
     });
 
     console.log(Presenters);
@@ -92,28 +94,21 @@ export default class App extends React.Component {
   render() {
     return (
         <ScrollView>
-            <View style={styles.container}>
+            <View>
                 <Text>Presenters</Text>
-                <FlatList data={this.state.Presenters}
-                        renderItem={({Name}) => <Text style={styles.item}>{Name.Name}</Text>} 
+                <FlatList 
+                  data={this.state.Presenters}
+                  renderItem={({item}) =>
+                  <ListItem
+                    title={item.Name}
+                    subtitle={`${item.Role}\n${item.School}`}
+                    leftAvatar={{ source: { uri: 'http://edsigcon.org/assets/img/team/bakir.jpg' } }}
+                  />                    
+                }
+                  keyExtractor={item => item.key}
                 />
             </View>
         </ScrollView>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 100    
-  },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
-  },  
-});

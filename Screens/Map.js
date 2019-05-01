@@ -1,3 +1,5 @@
+// https://github.com/react-native-community/react-native-maps
+
 import React from 'react';
 import { MapView } from 'expo';
 import { Marker } from 'react-native-maps';

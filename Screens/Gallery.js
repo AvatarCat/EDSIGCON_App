@@ -1,3 +1,5 @@
+// https://facebook.github.io/react-native/docs/cameraroll
+
 import React from 'react';
 import { Image, View, Dimensions, ScrollView } from 'react-native';
 import { ImagePicker, Permissions } from 'expo';

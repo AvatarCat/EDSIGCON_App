@@ -29,6 +29,7 @@ class HomeScreen extends React.Component {
                 name='logo-dropbox'
                 type='ionicon'
                 color='orange'
+                title='Lost & Founds'
                 size= {30}
                 onPress={() => this.props.navigation.navigate('Lost')}                     
             />

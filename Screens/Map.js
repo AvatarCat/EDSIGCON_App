@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapView } from 'expo';
+import { Marker } from 'react-native-maps';
 
 export default class Map extends React.Component {
   render() {
@@ -7,12 +8,17 @@ export default class Map extends React.Component {
       <MapView
         style={{ flex: 1 }}
         initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
+          latitude: 41.4986,
+          longitude: -81.6945,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-      />
+      >
+      <Marker
+      coordinate={{latitude: 41.4986, longitude: -81.6945}}
+      title="Renaissance Hotel"
+    />
+    </MapView>
     );
   }
 }

@@ -3,8 +3,9 @@ import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 import * as firebase from 'firebase';
 import 'firebase/firestore';
+import {ListItem} from "react-native-elements"
 
-const ords = [];
+const faqs = [];
 
 export default class App extends React.Component {
 
@@ -27,29 +28,29 @@ export default class App extends React.Component {
     }
 
     this.state = {
-      orders: [],
+      FAQ: [],
       db: firebase.firestore()
     }
 
   }
 
-  GetAllOrders = () => {
+  GetAllFAQ = () => {
 
     //console.log(`USING EMAIL: ${email}`);
 
     let db = firebase.firestore();
 
-    let ordersRef = db.collection("FAQ");
+    let faqsRef = db.collection("FAQ");
 
-    ordersRef.get()
+    faqsRef.get()
              .then( (querySnapshot) => {
                // console.log(querySnapshot.docs);
                if(!querySnapshot.empty){
-                let Q = HandleDatabaseRead(querySnapshot);
+                this.HandleDatabaseRead(querySnapshot);
                }
              })
              .then(
-                 () => {this.setState({orders: ords})}
+                 () => {this.setState({FAQ: faqs})}
              )
              .catch((error) => 
              {
@@ -62,50 +63,49 @@ export default class App extends React.Component {
 
     //console.log("FIRESTORE_TEST", data);
 
-
+    const FAQ = [];
 
     data.forEach( (doc) => {
 
       //destructure data
       const { Question, Answer } = doc.data();
 
+      console.log("FIRESTORE_TEST", Answer)
       let listQuestion = {
         key: doc.id,
         Question: Question,
         Answer: Answer
       }
 
-      ords.push(listQuestion);
+      faqs.push(listQuestion);
       return listQuestion;
     });
 
-    console.log(ords);
     this.setState(
       {
-        orders: ords
+        FAQ: FAQ
       }
     )
   }  
 
   componentDidMount()
   {
-    this.GetAllOrders("ahuimanu@gmail.com");
+    this.GetAllFAQ(); 
   }  
 
   render() {
     return (
       <View>
         <Text>FAQ</Text>
-        <Text>{Question.Question}</Text>
         <FlatList
-            data = {this.state.orders}
+            data = {this.state.FAQ}
             renderItem = {({ item }) =>
                 <ListItem 
-                    title = {listQuestion.Question}
+                    title = {item.Question}
                     subtitle = {item.Answer}
                 />
             }
-            keyExtractor = {item => item.id}
+            keyExtractor = {item => item.key}
         />
       </View>
     );

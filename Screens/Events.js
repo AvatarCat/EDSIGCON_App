@@ -1,3 +1,5 @@
+// React Native Carousel: https://github.com/machadogj/react-native-carousel-control
+
 import React from 'react';
 import styles from '../styles'
 

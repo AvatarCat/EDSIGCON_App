@@ -1,10 +1,11 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { ListItem } from 'react-native-elements';
 
 import * as firebase from 'firebase';
 import 'firebase/firestore';
 
-const ords = [];
+
 
 export default class App extends React.Component {
 
@@ -12,45 +13,44 @@ export default class App extends React.Component {
   {
     super(props);
 
+    // Initialize Firebase
     var config = {
-        apiKey: "AIzaSyAtkvSY_qeKszbLPWf0yHgNSAUNXJZJHQg",
-        authDomain: "babb-grp-project.firebaseapp.com",
-        databaseURL: "https://babb-grp-project.firebaseio.com",
-        projectId: "babb-grp-project",
-        storageBucket: "babb-grp-project.appspot.com",
-        messagingSenderId: "394926697581"
-    };
+      apiKey: "AIzaSyAtkvSY_qeKszbLPWf0yHgNSAUNXJZJHQg",
+      authDomain: "babb-grp-project.firebaseapp.com",
+      databaseURL: "https://babb-grp-project.firebaseio.com",
+      projectId: "babb-grp-project",
+      storageBucket: "babb-grp-project.appspot.com",
+      messagingSenderId: "394926697581"
+  };
 
-    //ensure that no more than one firebase is instantiated
-    if (!firebase.apps.length) {
-        firebase.initializeApp(config);
-    }
+  //ensure that there is no more than one firebase
+  if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+}
 
     this.state = {
-      orders: [],
+      FAQ: [],
       db: firebase.firestore()
     }
 
   }
 
-  GetAllOrders = () => {
+  GetAllQuestions = () => {
 
     //console.log(`USING EMAIL: ${email}`);
 
     let db = firebase.firestore();
 
-    let ordersRef = db.collection("FAQ");
+    let questionsRef = db.collection("FAQ");
 
-    ordersRef.get()
+    questionsRef.get()
              .then( (querySnapshot) => {
                // console.log(querySnapshot.docs);
                if(!querySnapshot.empty){
-                let Q = HandleDatabaseRead(querySnapshot);
+                this.HandleDatabaseRead(querySnapshot);
                }
              })
-             .then(
-                 () => {this.setState({orders: ords})}
-             )
+             .then(() => {this.setState({FAQ: FAQ})})
              .catch((error) => 
              {
                 console.log(error);
@@ -60,9 +60,7 @@ export default class App extends React.Component {
   //callback for firebase to call
   HandleDatabaseRead = (data) => {
 
-    //console.log("FIRESTORE_TEST", data);
-
-
+    const FAQ = [];
 
     data.forEach( (doc) => {
 
@@ -75,37 +73,35 @@ export default class App extends React.Component {
         Answer: Answer
       }
 
-      ords.push(listQuestion);
+      FAQ.push(listQuestion);
       return listQuestion;
     });
 
-    console.log(ords);
+    console.log(FAQ);
     this.setState(
       {
-        orders: ords
+        FAQ
       }
     )
   }  
 
   componentDidMount()
   {
-    this.GetAllOrders("ahuimanu@gmail.com");
+    this.GetAllQuestions("ahuimanu@gmail.com");
   }  
 
   render() {
     return (
       <View>
-        <Text>FAQ</Text>
-        <Text>{Question.Question}</Text>
         <FlatList
-            data = {this.state.orders}
+            data = {this.state.FAQ}
             renderItem = {({ item }) =>
                 <ListItem 
-                    title = {listQuestion.Question}
+                    title = {item.Question}
                     subtitle = {item.Answer}
                 />
             }
-            keyExtractor = {item => item.id}
+            keyExtractor = {item => item.key}
         />
       </View>
     );

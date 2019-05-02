@@ -1,3 +1,4 @@
+// React Native Flip Card: https://www.npmjs.com/package/react-native-flip-card
 import React from 'react';
 import styles from '../styles'
 

@@ -1,4 +1,4 @@
-// https://github.com/react-native-community/react-native-maps
+// React Native Maps: https://github.com/react-native-community/react-native-maps
 
 import React from 'react';
 import { MapView } from 'expo';

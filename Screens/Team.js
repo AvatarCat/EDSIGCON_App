@@ -2,16 +2,14 @@
 // Got help from John Cunningham
 
 import React from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 import * as firebase from 'firebase';
 import 'firebase/firestore';
 import { ScrollView } from 'react-native-gesture-handler';
 import { ListItem } from 'react-native-elements';
 
-let presenters = [];
-
-export default class App extends React.Component {
+export default class Team extends React.Component {
 
   constructor(props)
   {
@@ -52,7 +50,7 @@ export default class App extends React.Component {
                 this.HandleDatabaseRead(querySnapshot);
                }
              })
-             .then(() => {this.setState({Presenters: presenters})})
+             .then(() => {this.setState({Presenters: Presenters})})
              .catch((error) => 
              {
                 console.log(error);
@@ -75,13 +73,13 @@ export default class App extends React.Component {
         School: School
       }
 
-      presenters.push(listPresenters);
+      Presenters.push(listPresenters);
     });
 
     console.log(Presenters);
     this.setState(
       {
-        Presenters: Presenters
+        Presenters
       }
     )
   }  
@@ -95,14 +93,14 @@ export default class App extends React.Component {
     return (
         <ScrollView>
             <View>
-                <Text>Presenters</Text>
                 <FlatList 
                   data={this.state.Presenters}
                   renderItem={({item}) =>
                   <ListItem
                     title={item.Name}
+                    titleStyle={{fontSize: 20}}
                     subtitle={`${item.Role}\n${item.School}`}
-                    leftAvatar={{ source: { uri: 'http://edsigcon.org/assets/img/team/bakir.jpg' } }}
+                    leftAvatar={{ source: require('../assets/tinyGecko.jpg')}}
                   />                    
                 }
                   keyExtractor={item => item.key}

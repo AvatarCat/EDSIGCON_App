@@ -1,3 +1,7 @@
+// React Navigation: https://reactnavigation.org/
+// React Native Elements: https://react-native-training.github.io/react-native-elements/
+// React Native: https://facebook.github.io/react-native/
+
 import React from 'react';
 import styles from './styles'
 
@@ -5,7 +9,7 @@ import LostAndFound from './Screens/LostAndFound.js'
 import Gallery from './Screens/Gallery.js'
 import FAQ from './Screens/FAQ.js'
 import Map from './Screens/Map.js'
-import PresenterBios from './Screens/PresenterBios.js'
+import Team from './Screens/Team.js'
 import Sessions from './Screens/Sessions.js'
 import Events from './Screens/Events.js'
 
@@ -67,7 +71,7 @@ class HomeScreen extends React.Component {
                 type='ionicon'
                 color='orange'
                 size= {30}
-                onPress={() => this.props.navigation.navigate('Presenters')} 
+                onPress={() => this.props.navigation.navigate('Team')} 
             />
             
             <Icon
@@ -181,10 +185,10 @@ const AppNavigator = createStackNavigator(
         },
       },
     },
-    Presenters: {
-      screen: PresenterBios,
+    Team: {
+      screen: Team,
       navigationOptions: {
-        title: 'Presenter Bios',
+        title: 'Team',
         headerTintColor: 'white',
         headerStyle: {
           backgroundColor: '#368BC1',

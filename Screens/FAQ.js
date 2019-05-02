@@ -5,7 +5,7 @@ import * as firebase from 'firebase';
 import 'firebase/firestore';
 import {ListItem} from "react-native-elements"
 
-const faqs = [];
+
 
 export default class App extends React.Component {
 
@@ -40,9 +40,9 @@ export default class App extends React.Component {
 
     let db = firebase.firestore();
 
-    let faqsRef = db.collection("FAQ");
+    let FAQRef = db.collection("FAQ");
 
-    faqsRef.get()
+    FAQRef.get()
              .then( (querySnapshot) => {
                // console.log(querySnapshot.docs);
                if(!querySnapshot.empty){
@@ -50,7 +50,7 @@ export default class App extends React.Component {
                }
              })
              .then(
-                 () => {this.setState({FAQ: faqs})}
+                 () => {this.setState({FAQ: FAQ})}
              )
              .catch((error) => 
              {
@@ -77,7 +77,7 @@ export default class App extends React.Component {
         Answer: Answer
       }
 
-      faqs.push(listQuestion);
+      FAQ.push(listQuestion);
       return listQuestion;
     });
 

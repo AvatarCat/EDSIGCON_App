@@ -1,4 +1,5 @@
 // React Native Dropdown List: https://www.npmjs.com/package/react-native-material-dropdown
+// Confetti: https://github.com/VincentCATILLON/react-native-confetti-cannon
 
 import React from 'react';
 import styles from '../styles'
@@ -7,6 +8,11 @@ import {Text, View, Picker} from 'react-native';
 import {SearchBar} from 'react-native-elements';
 import { Dropdown } from 'react-native-material-dropdown';
 import { ScrollView } from 'react-native-gesture-handler';
+import ConfettiCannon from 'react-native-confetti-cannon';
+
+const MyComponent = () => (
+  <ConfettiCannon count={500} origin={{x: -10, y: 0}} />
+);
 
 class LostAndFound extends React.Component {  
     state = {
@@ -52,6 +58,9 @@ class LostAndFound extends React.Component {
                           onChangeText={this.updateSearch}
                           value={search}
                       />
+                  </View>
+                  <View style={{marginTop: 575}}>
+                    <MyComponent/>
                   </View>
               </View>
             </ScrollView>

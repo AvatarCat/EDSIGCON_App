@@ -4,6 +4,8 @@ import React from 'react';
 import { MapView } from 'expo';
 import { Marker } from 'react-native-maps';
 
+
+
 export default class Map extends React.Component {
   render() {
     return (

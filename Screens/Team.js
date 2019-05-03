@@ -50,7 +50,7 @@ export default class Team extends React.Component {
                 this.HandleDatabaseRead(querySnapshot);
                }
              })
-             .then(() => {this.setState({Presenters: Presenters})})
+             .then(() => {this.setState({Presenters})})
              .catch((error) => 
              {
                 console.log(error);
@@ -100,7 +100,7 @@ export default class Team extends React.Component {
                     title={item.Name}
                     titleStyle={{fontSize: 20}}
                     subtitle={`${item.Role}\n${item.School}`}
-                    leftAvatar={{ source: require('../assets/tinyGecko.jpg')}}
+                    leftAvatar={{ source: require('../assets/sugarGlider.jpg')}}
                   />                    
                 }
                   keyExtractor={item => item.key}

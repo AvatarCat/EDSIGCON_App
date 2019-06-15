@@ -13,14 +13,7 @@ export default class App extends React.Component {
     super(props);
 
     // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyAtkvSY_qeKszbLPWf0yHgNSAUNXJZJHQg",
-      authDomain: "babb-grp-project.firebaseapp.com",
-      databaseURL: "https://babb-grp-project.firebaseio.com",
-      projectId: "babb-grp-project",
-      storageBucket: "babb-grp-project.appspot.com",
-      messagingSenderId: "394926697581"
-  };
+    // * Firebse Api Key
 
   //ensure that there is no more than one firebase
   if (!firebase.apps.length) {

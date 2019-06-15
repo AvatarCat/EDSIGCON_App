@@ -16,14 +16,7 @@ export default class Team extends React.Component {
     super(props);
 
     // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyCbcbyCO77Fplksny8Sm8yNq6qcsoJWIxk",
-        authDomain: "confapp-15042.firebaseapp.com",
-        databaseURL: "https://confapp-15042.firebaseio.com",
-        projectId: "confapp-15042",
-        storageBucket: "confapp-15042.appspot.com",
-        messagingSenderId: "971098273273"
-    };
+    // * Firebase api key
 
     //ensure that there is no more than one firebase
     if (!firebase.apps.length) {

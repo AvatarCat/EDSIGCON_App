@@ -1,8 +1,0 @@
-var config = {
-      apiKey: "AIzaSyAtkvSY_qeKszbLPWf0yHgNSAUNXJZJHQg",
-      authDomain: "babb-grp-project.firebaseapp.com",
-      databaseURL: "https://babb-grp-project.firebaseio.com",
-      projectId: "babb-grp-project",
-      storageBucket: "babb-grp-project.appspot.com",
-      messagingSenderId: "394926697581"
-  };

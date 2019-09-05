@@ -17,12 +17,12 @@ export default class Team extends React.Component {
 
     // Initialize Firebase
     var config = {
-        apiKey: "AIzaSyCbcbyCO77Fplksny8Sm8yNq6qcsoJWIxk",
-        authDomain: "confapp-15042.firebaseapp.com",
-        databaseURL: "https://confapp-15042.firebaseio.com",
+        apikey: process.env.REACT_APIKEY_TEAM,
+        authDomain: process.env.REACT_AUTHDOMAIN_TEAM,
+        databaseURL: process.env.REACT_DATABASEURL_TEAM,
         projectId: "confapp-15042",
-        storageBucket: "confapp-15042.appspot.com",
-        messagingSenderId: "971098273273"
+        storageBucket: process.env.REACT_STORAGEBUCKET_TEAM,
+        messagingSenderId: process.env.REACT_MESSAGINGSENDERID_TEAM
     };
 
     //ensure that there is no more than one firebase

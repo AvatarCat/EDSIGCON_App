@@ -15,11 +15,11 @@ export default class App extends React.Component {
     // Initialize Firebase
     var config = {
       apikey: process.env.REACT_APIKEY_FAQ,
-        authDomain: process.env.REACT_AUTHDOMAI_FAQ,
-        databaseURL: process.env.REACT_DATABASEURL_FAQ,
-        projectId: "babb-grp-project",
-        storageBucket: process.env.REACT_STORAGEBUCKET_FAQ,
-        messagingSenderId: process.env.REACT_MESSAGINGSENDERID_FAQ
+      authDomain: process.env.REACT_AUTHDOMAI_FAQ,
+      databaseURL: process.env.REACT_DATABASEURL_FAQ,
+      projectId: "babb-grp-project",
+      storageBucket: process.env.REACT_STORAGEBUCKET_FAQ,
+      messagingSenderId: process.env.REACT_MESSAGINGSENDERID_FAQ
   };
 
   //ensure that there is no more than one firebase
